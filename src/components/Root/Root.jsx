@@ -4,7 +4,7 @@ import { Link, Outlet, useLocation } from 'react-router';
 
 const Root = () => {
     const loca = useLocation();
-    console.log(loca);
+    // console.log(loca);
     return (
       <div>
         <Outlet/>

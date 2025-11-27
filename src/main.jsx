@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
@@ -11,7 +11,8 @@ import About from "./components/About/About.jsx";
 import Laptops from "./components/Laptops/Laptops.jsx";
 import Users from "./components/Users/Users.jsx";
 import UserData from "./components/Users/UserData.jsx";
-
+import Users2 from "./components/Users/Users2.jsx";
+const userPromise = fetch("https://jsonplaceholder.typicode.com/users") .then(res=>res.json())
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,12 +24,16 @@ const router = createBrowserRouter([
       { path: "about", Component: About },
       {
         path: "users",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/users"),
         Component: Users,
       },
       {
-        path: "users/:id?/:name?",
-        Component: UserData,
-      },
+        path: "users2",
+        element:<Suspense fallback="Loading..">
+          <Users2 userPromise={userPromise}></Users2>
+        </Suspense>
+      }
+  
     ],
   },
 ]);

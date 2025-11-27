@@ -1,7 +1,8 @@
 import React from "react";
-import { useLocation, useParams } from "react-router";
+import { useLoaderData, useLocation, useParams } from "react-router";
 
 const UserData = () => {
+
   const { id,name } = useParams();
   const loca = useLocation();
   console.log(loca);
