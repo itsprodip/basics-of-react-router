@@ -7,8 +7,8 @@ const Root = () => {
     // console.log(loca);
     return (
       <div>
-        <Outlet/>
         <Navbar></Navbar>
+        <Outlet />
       </div>
     );
 };
